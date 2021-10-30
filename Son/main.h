@@ -20,4 +20,4 @@ void SReadFile(char* path, char* WordArr, int length);
 void EncryptMessage(char** key, char** message, int length, char** encryptedMessage);
 int writeToFile(char pathToFile[], char** stringToAppend);
 int WinWriteToFile(LPCTSTR pathToFile, char** stringToAppend, int MessegeLen, OVERLAPPED offset_bytes);
-int WinReadFromFile(LPCTSTR pathToFile, char** message, int MessegeLen, OVERLAPPED offset_bytes);
+int WinReadFromFile(char* pathToFile, char** message, int MessegeLen, OVERLAPPED offset_bytes);
