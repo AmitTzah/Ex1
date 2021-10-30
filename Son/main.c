@@ -141,14 +141,14 @@ int WinReadFromFile(char* pathToFile, char* message, int messageLen, OVERLAPPED 
 		exit(1);
 	}
 
-	/*DWORD res = SetFilePointer(hFile, NUM_OF_BYTES_TO_WRITE, NULL, FILE_BEGIN);
+	DWORD res = SetFilePointer(hFile, offset_bytes.Offset, NULL, FILE_BEGIN);
 	if (res == INVALID_SET_FILE_POINTER) {
 		const int error = GetLastError();
 		printf("Error setting file pointer! %d", error);
 		exit(1);
-	}*/
+	}
 	DWORD bytesRead;
-	DWORD res = ReadFile(hFile, message, messageLen, &bytesRead, NULL);
+	 res = ReadFile(hFile, message, messageLen, &bytesRead, NULL);
 
 	if (FALSE == res)
 	{
