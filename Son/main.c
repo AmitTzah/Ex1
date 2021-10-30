@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 	LPDWORD num_of_bytes_written=NULL;
 	offset_bytes.Offset = atoi(argv[2]);// accourding to instruction the first arg is the offset val
 	offset_bytes.OffsetHigh = 0;
+	offset_bytes.hEvent = 0;
 	char* Key = NULL;
 	char* EncryptedMessage = NULL;
 	char* Message = NULL;
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
 	// just for test delete later
 	//---------#############TEST#############################---------
 	char FileName[] =  "./plaintext.txt";
-	int OffSet = 16;
+	offset_bytes.Offset = 16;
 	char KeyFileName[] = ". / key.txt";
 	
 	EncryptMessage(&Key, &Message, NUM_OF_BYTES_TO_WRITE, &EncryptedMessage);
@@ -76,7 +77,7 @@ void EncryptMessage(char** key, char** message, int length, char** encryptedMess
 * based on the example from:
 * https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 */
-int WinWriteToFile(wchar_t  pathToFile[], char** stringToAppend, int MessegeLen)
+int WinWriteToFile(wchar_t  pathToFile[], char** stringToAppend, int MessegeLen, OVERLAPPED offset_bytes)
 {
 	// Open a handle to the file
 	HANDLE hFile = CreateFile(
