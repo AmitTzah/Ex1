@@ -13,7 +13,8 @@ int main(int argc, char *argv[])
 	HANDLE Encrypted_message_file;
 	
 	OVERLAPPED offset_bytes;
-	LPDWORD num_of_bytes_written=NULL;
+	DWORD num_of_bytes_written = 1;
+	LPDWORD  num_of_bytes_written_pointer= &num_of_bytes_written;
 	offset_bytes.Offset = 0;
 	offset_bytes.OffsetHigh = 0;
 
@@ -44,9 +45,9 @@ int main(int argc, char *argv[])
 		exit(1);
 	}
 
-	WriteFile(Encrypted_message_file, test_, NUM_OF_BYTES_TO_WRITE, num_of_bytes_written , &offset_bytes);
+	WriteFile(Encrypted_message_file, test_, NUM_OF_BYTES_TO_WRITE, num_of_bytes_written_pointer, &offset_bytes);
 
-	printf("%ld", *num_of_bytes_written);
+	printf("%ld", *num_of_bytes_written_pointer);
 
 	return 0;
 
