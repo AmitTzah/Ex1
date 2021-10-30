@@ -13,12 +13,14 @@ int main(int argc, char *argv[])
 	HANDLE Encrypted_message_file;
 	
 	OVERLAPPED offset_bytes;
-	DWORD num_of_bytes_written = 1;
+	DWORD num_of_bytes_written;
 	LPDWORD  num_of_bytes_written_pointer= &num_of_bytes_written;
-	offset_bytes.Offset = 0;
-	offset_bytes.OffsetHigh = 0;
 
-	char test_[] = "hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh";
+	offset_bytes.Offset = 2;
+	offset_bytes.OffsetHigh = 0;
+	offset_bytes.hEvent = 0;
+
+	char test_[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 	message_file = CreateFileA(
 		argv[1],
