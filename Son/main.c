@@ -16,11 +16,11 @@ int main(int argc, char *argv[])
 	DWORD num_of_bytes_written;
 	LPDWORD  num_of_bytes_written_pointer= &num_of_bytes_written;
 
-	offset_bytes.Offset = 2;
+	offset_bytes.Offset = atoi(argv[2]);
 	offset_bytes.OffsetHigh = 0;
 	offset_bytes.hEvent = 0;
 
-	char test_[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
+	char test_[] = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
 
 	message_file = CreateFileA(
 		argv[1],
