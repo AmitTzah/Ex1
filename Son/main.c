@@ -38,7 +38,7 @@ int main(int argc, char *argv[])
 	
 	EncryptMessage(&Key, &Message, NUM_OF_BYTES_TO_WRITE, &EncryptedMessage);
 	printf("EncryptedMessage = %s \n", EncryptedMessage);
-	WinWriteToFile(TARGET_FILE, &EncryptedMessage, NUM_OF_BYTES_TO_WRITE);
+	WinWriteToFile(TARGET_FILE, &EncryptedMessage, NUM_OF_BYTES_TO_WRITE, offset_bytes);
 
 	
 
@@ -104,9 +104,13 @@ int WinWriteToFile(wchar_t  pathToFile[], char** stringToAppend, int MessegeLen,
 		(DWORD)*stringToAppend,  // Buffer to write
 		MessegeLen,   // Buffer size
 		stringToAppend,    // Bytes written
-		NULL);         // Overlapped
+		&offset_bytes);         // Overlapped
 
 	 // Close the handle once we don't need it.
 	CloseHandle(hFile);
 }
 
+int WinReadFromFile(LPCTSTR pathToFile, char** message, int MessegeLen, OVERLAPPED offset_bytes)
+{
+
+}
