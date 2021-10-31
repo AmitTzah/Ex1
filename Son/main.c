@@ -1,11 +1,8 @@
-#define _CRT_SECURE_NO_WARNINGS
-
-
 #include "HardCodedData.h"
 #include "file_IO.h"
 #include "encryption.h"
 
-int main(int argc, char *argv[])
+void main(int argc, char *argv[])
 {
 	char string_read_from_message[NUM_OF_BYTES_TO_WRITE_OR_READ + 1];//this is a null terminated string.
 	char string_read_from_key[NUM_OF_BYTES_TO_WRITE_OR_READ+1]; //this is a null terminated string.
@@ -29,6 +26,6 @@ int main(int argc, char *argv[])
 
 	WinWriteToFile(PATH_TO_ENCRYPTION_MESSAGE_FILE, encrypted_message_string, NUM_OF_BYTES_TO_WRITE_OR_READ, atoi(argv[2]));
 
-
-
+	
+ 
 }
