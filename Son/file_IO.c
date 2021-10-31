@@ -6,15 +6,6 @@
 
 
 
-/// <summary>
-/// 
-/// <Function to read from a given file with given offset>
-/// <param name="pathToFile"></path to file to be read >
-/// <param name="buffer_for_bytes_read"></the buffer to read into the bytes. Null terminated.>
-/// <param name="num_of_bytes_to_read"></Number of bytes that will be read from offset>
-/// <param name="read_from_offset"></offset from which to start reading>
-/// <returns></returns the number of bytes that were read>
-/// 
 
 
 //based on the example from :
@@ -22,6 +13,17 @@
 https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 
 */
+
+/// <summary>
+/// 
+/// <Function to read from a given file with given offset>
+/// <param name="pathToFile"></path to file to be read >
+/// <param name="buffer_for_bytes_read"></the string buffer to which the bytes are read. Should have space for  Null terminator>
+/// <param name="num_of_bytes_to_read"></Number of bytes that will be read from offset>
+/// <param name="read_from_offset"></offset from which to start reading>
+/// <returns></returns the number of bytes that were read>
+/// 
+
 
 int WinReadFromFile(char* pathToFile, char* buffer_for_bytes_read, int num_of_bytes_to_read, int read_from_offset)
 {
@@ -81,6 +83,15 @@ int WinReadFromFile(char* pathToFile, char* buffer_for_bytes_read, int num_of_by
 https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it 
 
 */ 
+
+	/// <summary>
+	/// 
+	/// </Generic write to file from the given offset. StringToWrite is written to pathToFile>
+	/// <param name="pathToFile"></Path of the file to be written into.>
+	/// <param name="stringToWrite"></Null terminated>
+	/// <param name="StringLen"></Length of string to be written>
+	/// <param name="write_from_offset"></Offset from which to start overwriting>
+	/// <returns></returns the number of bytes that were written.>
 	
 	int WinWriteToFile(char* pathToFile, char* stringToWrite, int StringLen, int write_from_offset)
 {
@@ -111,14 +122,22 @@ https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 	}
 
 
-	//printf("%ld", *num_of_bytes_written);
 	DWORD bytesWritten;
-	WriteFile(
+	int res;
+
+	res= WriteFile(
 		hFile,            // Handle to the file
 		stringToWrite,  // Buffer to write
 		StringLen,   // Buffer size
 		&bytesWritten,    // Bytes written
 		&offset_bytes);         // Overlapped
+
+	if (FALSE == res)
+	{
+		const int error = GetLastError();
+		printf("Error reading file! %d", error);
+		exit(1);
+	}
 
 	 // Close the handle once we don't need it.
 	CloseHandle(hFile);

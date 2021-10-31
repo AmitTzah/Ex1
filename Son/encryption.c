@@ -15,12 +15,6 @@
 void EncryptMessage_xor_operation(char* key, char* message, int length_of_key_and_message, char* encryptedMessage) {
 	int i = 0;
 
-	/*if (NULL == strcpy(*Encrypt, *message))
-	{
-		printf("failed to copy string \n");
-	}*/
-
-
 	for (i = 0; i < length_of_key_and_message; ++i) {
 		
 		encryptedMessage[i] = message[i] ^ key[i];
@@ -28,5 +22,5 @@ void EncryptMessage_xor_operation(char* key, char* message, int length_of_key_an
 
 	encryptedMessage[length_of_key_and_message] = '\0';
 
-	printf("encryptedMessage= %s\n", encryptedMessage);
+	
 }
