@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ed6d8ce2-a6c4-401c-8f5c-42f48966a6d6}</ProjectGuid>
-    <RootNamespace>Son</RootNamespace>
+    <ProjectGuid>{9c5b2abc-36a9-4a45-badd-df4b4a613ee9}</ProjectGuid>
+    <RootNamespace>Father</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -144,13 +144,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Share\file_IO.c" />
-    <ClCompile Include="encryption.c" />
+    <ClCompile Include="create_and_handle_processes.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Share\file_IO.h" />
     <ClInclude Include="..\Share\HardCodedData.h" />
-    <ClInclude Include="encryption.h" />
+    <ClInclude Include="create_and_handle_processes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -14,36 +14,31 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Shared Source Files">
-      <UniqueIdentifier>{987e7227-2664-4b29-b142-f8787dd4ffa5}</UniqueIdentifier>
+      <UniqueIdentifier>{fbf2e297-1c8f-4345-82a1-4ade584c0cc4}</UniqueIdentifier>
     </Filter>
     <Filter Include="Shared Header Files">
-      <UniqueIdentifier>{91f98710-16d5-4f56-a860-fdf2eabedf94}</UniqueIdentifier>
+      <UniqueIdentifier>{c7baf1d8-8dde-45f3-9b22-534ac6c7f99a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="encryption.c">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="..\Share\file_IO.c">
       <Filter>Shared Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="create_and_handle_processes.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="encryption.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Share\file_IO.h">
       <Filter>Shared Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Share\HardCodedData.h">
       <Filter>Shared Header Files</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="main.h">
+    <ClInclude Include="create_and_handle_processes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
