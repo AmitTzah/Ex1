@@ -1,14 +1,40 @@
 #define _CRT_SECURE_NO_WARNINGS
-#define NUM_OF_BYTES_TO_WRITE 16
+#define NUM_OF_BYTES_TO_WRITE_OR_READ 16
 
-#include <stdio.h>
-#include < stddef.h >
-#include <stdlib.h>
-#include <Windows.h>
+#include "file_IO.h"
 
 
 int main(int argc, char *argv[])
 {
+	char bytes_read_from_message[NUM_OF_BYTES_TO_WRITE_OR_READ + 1];//this is a null terminated string.
+	char bytes_read_from_key[NUM_OF_BYTES_TO_WRITE_OR_READ+1]; //this is a null terminated string.
+	char encrypted_bytes_read_from_message[NUM_OF_BYTES_TO_WRITE_OR_READ + 1];
+
+	//read key into a null terminated buffer.
+	WinReadFromFile(argv[3], bytes_read_from_key, NUM_OF_BYTES_TO_WRITE_OR_READ, 0);
+
+
+	//read 16 bytes from messagefile into buffer with the correct offset. 
+	WinReadFromFile(argv[1], bytes_read_from_message, NUM_OF_BYTES_TO_WRITE_OR_READ, atoi(argv[2]));
+
+	
+	//perform xor operation with key, put the encrypted bytes into a encrypted_buffer defined in main.
+	// 
+	// 
+	//write this buffer to encrypted message file with the correct offset. 
+
+
+
+
+
+
+	//testing
+
+
+	printf("%s", bytes_read_from_key);
+
+
+	/*  
 	HANDLE message_file;
 	HANDLE Encrypted_message_file;
 	
@@ -52,5 +78,5 @@ int main(int argc, char *argv[])
 	printf("%ld", *num_of_bytes_written_pointer);
 
 	return 0;
-
+	*/
 }
