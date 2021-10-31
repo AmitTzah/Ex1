@@ -144,10 +144,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\Share\file_IO.c" />
+    <ClCompile Include="create_and_handle_processes.c" />
     <ClCompile Include="main.c" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Share\file_IO.h" />
+    <ClInclude Include="..\Share\HardCodedData.h" />
+    <ClInclude Include="create_and_handle_processes.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

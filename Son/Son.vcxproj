@@ -149,8 +149,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Share\file_IO.h" />
+    <ClInclude Include="..\Share\HardCodedData.h" />
     <ClInclude Include="encryption.h" />
-    <ClInclude Include="HardCodedData.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
