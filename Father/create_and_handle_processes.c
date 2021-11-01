@@ -1,6 +1,38 @@
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
 #include <windows.h>
 #include "HardCodedData.h"
+
+
+
+
+
+
+
+//private function, based on example from moodle.
+BOOL CreateProcessSimple(LPSTR CommandLine, PROCESS_INFORMATION* ProcessInfoPtr)
+{
+	STARTUPINFO	startinfo = { sizeof(STARTUPINFO), NULL, 0 }; /* <ISP> here we */
+															  /* initialize a "Neutral" STARTUPINFO variable. Supplying this to */
+															  /* CreateProcess() means we have no special interest in this parameter. */
+															  /* This is equivalent to what we are doing by supplying NULL to most other */
+															  /* parameters of CreateProcess(). */
+
+	return CreateProcessA(
+		NULL, /*  No module name (use command line). */
+		CommandLine,			/*  Command line. */
+		NULL,					/*  Process handle not inheritable. */
+		NULL,					/*  Thread handle not inheritable. */
+		FALSE,					/*  Set handle inheritance to FALSE. */
+		NORMAL_PRIORITY_CLASS,	/*  creation/priority flags. */
+		NULL,					/*  Use parent's environment block. */
+		NULL,					/*  Use parent's starting directory. */
+		&startinfo,				/*  Pointer to STARTUPINFO structure. */
+		ProcessInfoPtr			/*  Pointer to PROCESS_INFORMATION structure. */
+	);
+}
 
 
 //public function, based on example from moodle.
@@ -77,25 +109,48 @@ DWORD CreateProcessSimpleMain(LPSTR command_line_arguments_to_run, int time_out_
 	return exitcode;
 }
 
-//private function, based on example from moodle.
-BOOL CreateProcessSimple(LPSTR CommandLine, PROCESS_INFORMATION* ProcessInfoPtr)
-{
-	STARTUPINFO	startinfo = { sizeof(STARTUPINFO), NULL, 0 }; /* <ISP> here we */
-															  /* initialize a "Neutral" STARTUPINFO variable. Supplying this to */
-															  /* CreateProcess() means we have no special interest in this parameter. */
-															  /* This is equivalent to what we are doing by supplying NULL to most other */
-															  /* parameters of CreateProcess(). */
 
-	return CreateProcessA(
-		NULL, /*  No module name (use command line). */
-		CommandLine,			/*  Command line. */
-		NULL,					/*  Process handle not inheritable. */
-		NULL,					/*  Thread handle not inheritable. */
-		FALSE,					/*  Set handle inheritance to FALSE. */
-		NORMAL_PRIORITY_CLASS,	/*  creation/priority flags. */
-		NULL,					/*  Use parent's environment block. */
-		NULL,					/*  Use parent's starting directory. */
-		&startinfo,				/*  Pointer to STARTUPINFO structure. */
-		ProcessInfoPtr			/*  Pointer to PROCESS_INFORMATION structure. */
-	);
+
+
+
+//based on https://stackoverflow.com/questions/7174216/how-can-i-concatenate-arguments-in-to-a-string-in-c
+
+/// <summary>
+/// 
+/// </concatenate command line arguments into a single string that can be passed to Son process, including the name of the Son.exe>
+/// <param name="num_of_arguments"></Number of arguments including the name of Son.exe>
+/// <param name="arguments_array"></Am array of const strings argv[0], argv[1] etc>
+/// <returns></Returns a dynamically allocated command line strings. This string should be freed in caller!>
+
+char * concatenate_command_line_arguments_into_a_string (int num_of_arguments, char * arguments_array[])
+
+{
+	int i;
+	int needed = 1;                        // plus end of string mark
+
+	for (i = 0; i < num_of_arguments; ++i) {
+		needed += strlen(arguments_array[i]) + 1; // plus space
+	}
+
+	char* command_line_string = (char*)malloc(sizeof(char) * needed);
+
+	// if memory cannot be allocated
+	if (command_line_string == NULL) {
+		printf("Error! memory not allocated to command_line_string.\n");
+		exit(1);
+	}
+	else{
+		memset(command_line_string, 0, needed);
+	
+
+	strcpy(command_line_string,  arguments_array[0]);
+
+	for (i = 1; i < num_of_arguments; ++i) {
+		strcat(command_line_string, " ");
+		strcat(command_line_string, arguments_array[i]);
+	}
+	}
+
+	return command_line_string;
+	
 }

@@ -45,7 +45,7 @@ int WinReadFromFile(char* pathToFile, char* buffer_for_bytes_read, int num_of_by
 		GENERIC_READ,        // Desired access
 		NULL,
 		NULL, // Security attributes
-		OPEN_ALWAYS,
+		OPEN_EXISTING,
 		FILE_ATTRIBUTE_NORMAL,
 		// Share mode
 		NULL
@@ -55,7 +55,7 @@ int WinReadFromFile(char* pathToFile, char* buffer_for_bytes_read, int num_of_by
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
 		const int error = GetLastError();
-		printf("Error opening file %s! %d\n", pathToFile, error);
+		printf("Error opening file %s!. Error Code: %d\n", pathToFile, error);
 		exit(1);
 	}
 
@@ -67,7 +67,7 @@ int WinReadFromFile(char* pathToFile, char* buffer_for_bytes_read, int num_of_by
 	if (FALSE == res)
 	{
 		const int error = GetLastError();
-		printf("Error reading file! %d\n", error);
+		printf("Error reading file!. Error Code: %d\n", error);
 		exit(1);
 	}
 	CloseHandle(hFile);
@@ -116,7 +116,7 @@ https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 	if (hFile == INVALID_HANDLE_VALUE)
 	{
 		const int error = GetLastError();
-		printf("WinWriteToFile Error opening file %s! %d\n", pathToFile, error);
+		printf("WinWriteToFile Error opening file %s!. Error Code: %d\n", pathToFile, error);
 		exit(1);
 	}
 
@@ -134,7 +134,7 @@ https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 	if (FALSE == res)
 	{
 		const int error = GetLastError();
-		printf("Error reading file! %d\n", error);
+		printf("Error reading file!. Error Code: %d\n", error);
 		exit(1);
 	}
 
