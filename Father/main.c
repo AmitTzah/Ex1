@@ -28,13 +28,12 @@ void main(int argc, char* argv[])
 		}
 	}
 	
-
+	 
 	strcpy(command_line_arguments[0] , "Son.exe");
 	strcpy(command_line_arguments[1], argv[1]);
 	strcpy(command_line_arguments[2], "0");
 	strcpy(command_line_arguments[3] , argv[2]);
 
-	//printf("%s", concatenate_command_line_arguments_into_a_string(NUMBER_OF_ARGUMENTS_TO_PASS_TO_SON+1, command_line_arguments));
 	
 	//get size of message_file
 	
