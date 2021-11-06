@@ -13,8 +13,14 @@ void main(int argc, char* argv[])
 	int NumOfCharsInFile = 0;
 	//char* command_arguments_to_path_to_son[NumberOfParameters2Pass2Son];
 	char* command_arguments_to_path_to_son = NULL;
-	command_arguments_to_path_to_son= malloc(sizeof(char) * MAX_LENGTH_OF_PATH_TO_A_FILE);;
+	command_arguments_to_path_to_son= malloc(sizeof(char) * MAX_LENGTH_OF_PATH_TO_A_FILE);
+	if (NULL == command_arguments_to_path_to_son)
+	{
+		printf("error alocating memory");
+	}
 	char* temp[MAX_LENGTH_OF_PATH_TO_A_FILE];
+	//Exitcode of son is checked
+	int son_exit_code;
 	
 	//strcpy_s(command_arguments_to_path_to_son, MAX_LENGTH_OF_PATH_TO_A_FILE, "Son.exe plaintext.txt 0 key.txt");
 	
@@ -37,10 +43,12 @@ void main(int argc, char* argv[])
 
 	
 	NumOfCharsInFile = return_numbers_of_chars_in_file(argv[1]);
-	CreateProcessSimpleMain(command_arguments_to_path_to_son, TIMEOUT_IN_MILLISECONDS);
-
+	son_exit_code = CreateProcessSimpleMain(command_arguments_to_path_to_son, TIMEOUT_IN_MILLISECONDS);
+	if (son_exit_code != 0) {
+		printf("procces creation failed");
+	}
 	free(command_arguments_to_path_to_son);
-	free(temp);
+	
 	
 
 } 
