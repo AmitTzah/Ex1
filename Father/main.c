@@ -18,8 +18,9 @@ void main(int argc, char* argv[])
 	
 	//strcpy_s(command_arguments_to_path_to_son, MAX_LENGTH_OF_PATH_TO_A_FILE, "Son.exe plaintext.txt 0 key.txt");
 	
-	//command_arguments_to_path_to_son= "Son.exe ";
-	strcpy(command_arguments_to_path_to_son, SON_EXE_PATH_RELATIVE_TO_FATHER);
+	//command_arguments_to_path_to_son= "Son.exe";
+	//strcpy(command_arguments_to_path_to_son, SON_EXE_PATH_RELATIVE_TO_FATHER);
+	strcpy(command_arguments_to_path_to_son, "Son.exe");
 	strcat(command_arguments_to_path_to_son, " ");
 	strcat(command_arguments_to_path_to_son, argv[1]);
 	strcat(command_arguments_to_path_to_son," ");
