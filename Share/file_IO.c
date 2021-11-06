@@ -135,6 +135,7 @@ https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 	{
 		const int error = GetLastError();
 		printf("Error reading file! %d\n", error);
+		printf("shoof\n");
 		exit(1);
 	}
 
