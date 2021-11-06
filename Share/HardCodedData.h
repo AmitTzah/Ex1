@@ -11,3 +11,5 @@
 #define BRUTAL_TERMINATION_CODE 0x55
 
 #endif
+
+#define NumberOfParameters2Pass2Son  4 // son name,file path, offset, key file

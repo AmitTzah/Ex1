@@ -25,7 +25,7 @@ DWORD CreateProcessSimpleMain(LPSTR command_line_arguments_to_run, int time_out_
 
 		
 													/*  Start the child process. */
-	retVal = CreateProcessSimple(command_line_arguments_to_run, &procinfo);
+	retVal = CreateProcessSimple(*command_line_arguments_to_run, &procinfo);
 
 
 	if (retVal == 0)
@@ -78,7 +78,7 @@ DWORD CreateProcessSimpleMain(LPSTR command_line_arguments_to_run, int time_out_
 }
 
 //private function, based on example from moodle.
-BOOL CreateProcessSimple(LPSTR CommandLine, PROCESS_INFORMATION* ProcessInfoPtr)
+BOOL CreateProcessSimple(char* CommandLine, PROCESS_INFORMATION* ProcessInfoPtr)
 {
 	STARTUPINFO	startinfo = { sizeof(STARTUPINFO), NULL, 0 }; /* <ISP> here we */
 															  /* initialize a "Neutral" STARTUPINFO variable. Supplying this to */

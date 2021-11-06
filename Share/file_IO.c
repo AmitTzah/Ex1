@@ -164,7 +164,7 @@ https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 	int return_numbers_of_chars_in_file(char* pathToFile) {
 
 
-		FILE* fp;
+		FILE* fp=NULL;
 
 		// Declaring a variable of type errno_t to store the return value of fopen_s
 		errno_t error_code;
@@ -173,7 +173,8 @@ https://riptutorial.com/winapi/example/5736/create-a-file-and-write-to-it
 		error_code = fopen_s(&fp, pathToFile , "r");
 
 		if (error_code != 0) {
-			printf("Error! Failed to open file in r mode!\n");
+			const int error = GetLastError();
+			printf("Error opening file %s! %d\n", pathToFile, error);
 			exit(1);
 		}
 		else{
