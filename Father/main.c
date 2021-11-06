@@ -14,13 +14,18 @@ void main(int argc, char* argv[])
 	//char* command_arguments_to_path_to_son[NumberOfParameters2Pass2Son];
 	char* command_arguments_to_path_to_son = NULL;
 	command_arguments_to_path_to_son= malloc(sizeof(char) * MAX_LENGTH_OF_PATH_TO_A_FILE);;
-
+	char* temp[MAX_LENGTH_OF_PATH_TO_A_FILE];
+	
 	//strcpy_s(command_arguments_to_path_to_son, MAX_LENGTH_OF_PATH_TO_A_FILE, "Son.exe plaintext.txt 0 key.txt");
 	
 	//command_arguments_to_path_to_son= "Son.exe ";
-	strcpy(command_arguments_to_path_to_son, "Son.exe ");
+	strcpy(command_arguments_to_path_to_son, SON_EXE_PATH_RELATIVE_TO_FATHER);
+	strcat(command_arguments_to_path_to_son, " ");
 	strcat(command_arguments_to_path_to_son, argv[1]);
-	strcat(command_arguments_to_path_to_son, offset);
+	strcat(command_arguments_to_path_to_son," ");
+	sprintf(temp, "%d", offset);
+	strcat(command_arguments_to_path_to_son, temp);
+	strcat(command_arguments_to_path_to_son, " ");
 	strcat(command_arguments_to_path_to_son, argv[2]);
 	/*
 	command_arguments_to_path_to_son[0] = "Son.exe";
@@ -30,8 +35,8 @@ void main(int argc, char* argv[])
 	*/
 
 	
-	NumOfCharsInFile = return_numbers_of_chars_in_file(command_arguments_to_path_to_son[1]);
-	CreateProcessSimpleMain(&command_arguments_to_path_to_son, TIMEOUT_IN_MILLISECONDS);
+	NumOfCharsInFile = return_numbers_of_chars_in_file(argv[1]);
+	CreateProcessSimpleMain(command_arguments_to_path_to_son, TIMEOUT_IN_MILLISECONDS);
 	
 
 } 

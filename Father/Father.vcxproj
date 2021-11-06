@@ -145,7 +145,9 @@
   <ItemGroup>
     <ClCompile Include="..\Share\file_IO.c" />
     <ClCompile Include="create_and_handle_processes.c" />
-    <ClCompile Include="main.c" />
+    <ClCompile Include="main.c">
+      <DisableSpecificWarnings Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">4996</DisableSpecificWarnings>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Share\file_IO.h" />
