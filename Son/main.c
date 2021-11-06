@@ -4,14 +4,15 @@
 
 void main(int argc, char *argv[])
 {
+	printf("started son");
 	char string_read_from_message[NUM_OF_BYTES_TO_WRITE_OR_READ + 1];//this is a null terminated string.
 	char string_read_from_key[NUM_OF_BYTES_TO_WRITE_OR_READ+1]; //this is a null terminated string.
 	char encrypted_message_string[NUM_OF_BYTES_TO_WRITE_OR_READ + 1]; //this is a null terminated string.
-
+	
 	//read key into a null terminated buffer.
 	WinReadFromFile(argv[3], string_read_from_key, NUM_OF_BYTES_TO_WRITE_OR_READ, 0);
 	
-	printf("started son");
+	
 
 	//read 16 bytes from messagefile into buffer with the correct offset. 
 	WinReadFromFile(argv[1], string_read_from_message, NUM_OF_BYTES_TO_WRITE_OR_READ, atoi(argv[2]));

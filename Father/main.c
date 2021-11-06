@@ -38,6 +38,9 @@ void main(int argc, char* argv[])
 	
 	NumOfCharsInFile = return_numbers_of_chars_in_file(argv[1]);
 	CreateProcessSimpleMain(command_arguments_to_path_to_son, TIMEOUT_IN_MILLISECONDS);
+
+	free(command_arguments_to_path_to_son);
+	free(temp);
 	
 
 } 
